@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #e8c558;
+  --gold-dark: #9a7526;
+  --dark-950: #080808;
+  --dark-900: #0f0f0f;
+  --dark-800: #1a1a1a;
+  --dark-700: #2a2a2a;
+  --dark-600: #424242;
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-dark) var(--dark-800);
+  }
+  *::-webkit-scrollbar { width: 4px; height: 4px; }
+  *::-webkit-scrollbar-track { background: var(--dark-800); }
+  *::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+  body {
+    background: var(--dark-950);
+    color: #e0e0e0;
+  }
+}
+
+@layer components {
+  /* Cards */
+  .card {
+    @apply bg-dark-800 border border-dark-700 rounded-2xl shadow-card;
+  }
+  .card-gold {
+    @apply card border-gold-500/20 bg-card-gradient;
+  }
+
+  /* Botões */
+  .btn-gold {
+    @apply bg-gold-gradient text-dark-950 font-semibold px-6 py-2.5 rounded-xl
+           hover:shadow-gold-lg transition-all duration-300 active:scale-95;
+  }
+  .btn-outline {
+    @apply border border-dark-600 text-dark-200 px-6 py-2.5 rounded-xl
+           hover:border-gold-500/50 hover:text-gold-400 transition-all duration-200;
+  }
+  .btn-ghost {
+    @apply text-dark-300 px-4 py-2 rounded-lg hover:bg-dark-700 hover:text-dark-100 transition-all;
+  }
+
+  /* Inputs */
+  .input {
+    @apply bg-dark-900 border border-dark-700 rounded-xl px-4 py-2.5 text-dark-100
+           placeholder:text-dark-500 focus:outline-none focus:border-gold-500/60
+           focus:ring-1 focus:ring-gold-500/20 transition-all w-full;
+  }
+  .label {
+    @apply text-xs font-medium text-dark-400 uppercase tracking-wider mb-1.5 block;
+  }
+
+  /* Badges */
+  .badge-verde   { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-400/10 text-emerald-400 border border-emerald-400/20; }
+  .badge-amarelo { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-400/10 text-amber-400 border border-amber-400/20; }
+  .badge-vermelho{ @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-red-400/10 text-red-400 border border-red-400/20; }
+  .badge-gold    { @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-gold-500/15 text-gold-400 border border-gold-500/30; }
+
+  /* Tabelas */
+  .table-head { @apply text-xs text-dark-400 uppercase tracking-wider font-medium; }
+  .table-row  { @apply border-t border-dark-700/50 hover:bg-dark-700/30 transition-colors; }
+
+  /* Sidebar */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-dark-400 text-sm font-medium
+           hover:bg-dark-700/60 hover:text-dark-100 transition-all cursor-pointer;
+  }
+  .nav-item-active {
+    @apply nav-item bg-gold-500/10 text-gold-400 border border-gold-500/20;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #C9A84C, #e8c558, #b8922f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-gradient-gold {
+    border-image: linear-gradient(135deg, #C9A84C, #e8c558) 1;
+  }
+
+  .glass {
+    background: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Progress bar animada */
+  .progress-bar {
+    @apply h-1.5 rounded-full overflow-hidden bg-dark-700;
+  }
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-1000 ease-out;
+  }
+}
+
+/* Animações de entrada dos cards */
+.card-animate {
+  animation: slideUp 0.4s ease-out both;
+}
+.card-animate:nth-child(1) { animation-delay: 0.05s; }
+.card-animate:nth-child(2) { animation-delay: 0.10s; }
+.card-animate:nth-child(3) { animation-delay: 0.15s; }
+.card-animate:nth-child(4) { animation-delay: 0.20s; }
+.card-animate:nth-child(5) { animation-delay: 0.25s; }
+.card-animate:nth-child(6) { animation-delay: 0.30s; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
